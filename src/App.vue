@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container mt-5">
+    <Header @viewChanged="changeComponent" />
+    <keep-alive>
+      <component :is="currComponent"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header.vue";
+import World from "./components/World.vue";
+import Top from "./components/Top.vue";
+import Continent from "./components/Continent.vue";
+import Country from "./components/Country.vue";
 
 export default {
-  name: 'App',
+  data() {
+    return {
+      currComponent: "World",
+    };
+  },
+  methods: {
+    changeComponent(component) {
+      this.currComponent = component;
+    },
+  },
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Top,
+    World,
+    Continent,
+    Country,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+.card {
+  overflow: auto;
+}
+.card {
+  min-height: 200px;
 }
 </style>
