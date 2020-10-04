@@ -2,28 +2,30 @@
   <Layout :loading="loading" :title="'World'">
     <p v-if="errorMessage">{{ errorMessage }}</p>
     <div v-if="!errorMessage && !loading">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>World</th>
-            <th>Total Infected</th>
-            <th>Active Cases</th>
-            <th>New Cases</th>
-            <th>New Deaths</th>
-            <th>Deaths</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Today</td>
-            <td>{{ convertToReadableFormat(todayData.totalCases) }}</td>
-            <td>{{ convertToReadableFormat(todayData.activeCases) }}</td>
-            <td>+ {{ convertToReadableFormat(todayData.newCases) }}</td>
-            <td>+ {{ convertToReadableFormat(todayData.newDeaths) }}</td>
-            <td>{{ convertToReadableFormat(todayData.totalDeaths) }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>World</th>
+              <th>Total Infected</th>
+              <th>Active Cases</th>
+              <th>New Cases</th>
+              <th>New Deaths</th>
+              <th>Deaths</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Today</td>
+              <td>{{ convertToReadableFormat(todayData.totalCases) }}</td>
+              <td>{{ convertToReadableFormat(todayData.activeCases) }}</td>
+              <td>+{{ convertToReadableFormat(todayData.newCases) }}</td>
+              <td>+{{ convertToReadableFormat(todayData.newDeaths) }}</td>
+              <td>{{ convertToReadableFormat(todayData.totalDeaths) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <DynamicChart :data="chartData" v-if="!errorMessage" />
     </div>
   </Layout>

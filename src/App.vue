@@ -1,10 +1,11 @@
 <template>
-  <div class="container mt-5">
+  <main class="container mt-5">
     <Header @viewChanged="changeComponent" />
     <keep-alive>
       <component :is="currComponent"></component>
     </keep-alive>
-  </div>
+    <Footer />
+  </main>
 </template>
 
 <script>
@@ -13,6 +14,7 @@ import World from "./components/World.vue";
 import Top from "./components/Top.vue";
 import Continent from "./components/Continent.vue";
 import Country from "./components/Country.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   data() {
@@ -31,14 +33,12 @@ export default {
     World,
     Continent,
     Country,
+    Footer,
   },
 };
 </script>
 
 <style lang="scss">
-.card {
-  overflow: auto;
-}
 .card {
   min-height: 200px;
 }

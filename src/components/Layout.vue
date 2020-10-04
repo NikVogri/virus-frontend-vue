@@ -1,6 +1,6 @@
 <template>
   <div class="card mt-4 py-3">
-    <div class="card-body px-5">
+    <div class="card-body px-lg-5">
       <h4>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,3 +37,10 @@ export default {
   props: ["title", "loading"],
 };
 </script>
+
+
+<style lang="scss" >
+.card-body {
+  padding: 0.6rem;
+}
+</style>

@@ -2,16 +2,20 @@
   <div>
     <Chart :labels="labels" :data="statistics" :label="label" />
     <hr />
-    <span class="mr-3">Display chart by:</span>
-    <ChartButton
-      :currentType="currentType"
-      :type="button.type"
-      :name="button.name"
-      v-for="button in buttons"
-      @chartChanged="changeChartData"
-      :key="button.type"
-    />
-    <span class="ml-3">/ per day</span>
+    <div class="chart-controls">
+      <span class="mr-3">Display chart by:</span>
+      <div>
+        <ChartButton
+          :currentType="currentType"
+          :type="button.type"
+          :name="button.name"
+          v-for="button in buttons"
+          @chartChanged="changeChartData"
+          :key="button.type"
+        />
+      </div>
+      <span class="ml-3">/ per day</span>
+    </div>
     <hr />
   </div>
 </template>
@@ -81,4 +85,14 @@ export default {
   },
 };
 </script>
-<style></style>
+<style lang="scss">
+.chart-controls {
+  display: flex;
+  align-items: center;
+
+  @media only screen and (max-width: 780px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>

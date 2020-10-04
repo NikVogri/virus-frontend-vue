@@ -1,28 +1,30 @@
 <template>
   <Layout :loading="loading" :title="'Continent data'">
     <p v-if="errorMessage">{{ errorMessage }}</p>
-    <table class="table table-bordered" v-if="!errorMessage && !loading">
-      <thead>
-        <tr>
-          <th>Continent</th>
-          <th>Total Infected</th>
-          <th>New Cases</th>
-          <th>Deaths</th>
-          <th>New Deaths</th>
-          <th>Active Cases</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="continent in continents" :key="continent.id">
-          <td>{{ convertToReadableFormat(continent.continent) }}</td>
-          <td>{{ convertToReadableFormat(continent.totalCases) }}</td>
-          <td>{{ convertToReadableFormat(continent.newCases) }}</td>
-          <td>{{ convertToReadableFormat(continent.totalDeaths) }}</td>
-          <td>{{ convertToReadableFormat(continent.newDeaths) }}</td>
-          <td>{{ convertToReadableFormat(continent.activeCases) }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-bordered" v-if="!errorMessage && !loading">
+        <thead>
+          <tr>
+            <th>Continent</th>
+            <th>Total Infected</th>
+            <th>New Cases</th>
+            <th>Deaths</th>
+            <th>New Deaths</th>
+            <th>Active Cases</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="continent in continents" :key="continent.id">
+            <td>{{ convertToReadableFormat(continent.continent) }}</td>
+            <td>{{ convertToReadableFormat(continent.totalCases) }}</td>
+            <td>{{ convertToReadableFormat(continent.newCases) }}</td>
+            <td>{{ convertToReadableFormat(continent.totalDeaths) }}</td>
+            <td>{{ convertToReadableFormat(continent.newDeaths) }}</td>
+            <td>{{ convertToReadableFormat(continent.activeCases) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </Layout>
 </template>
 

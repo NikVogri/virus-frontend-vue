@@ -10,29 +10,30 @@
       <strong>{{ errorMessage }}</strong>
     </p>
     <DynamicChart :data="chartData" v-if="!errorMessage && tableData" />
-
-    <table class="table table-borderless" v-if="tableData">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Total Infected</th>
-          <th>Active Cases</th>
-          <th>New Cases</th>
-          <th>New Deaths</th>
-          <th>Deaths</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="countryDay in tableData" :key="countryDay.id">
-          <td>{{ parseDate(countryDay.created_at) }}</td>
-          <td>{{ convertToReadableFormat(countryDay.totalCases) }}</td>
-          <td>{{ convertToReadableFormat(countryDay.activeCases) }}</td>
-          <td>+ {{ convertToReadableFormat(countryDay.newCases) }}</td>
-          <td>+ {{ convertToReadableFormat(countryDay.newDeaths) }}</td>
-          <td>{{ convertToReadableFormat(countryDay.totalDeaths) }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-borderless" v-if="tableData">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Total Infected</th>
+            <th>Active Cases</th>
+            <th>New Cases</th>
+            <th>New Deaths</th>
+            <th>Deaths</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="countryDay in tableData" :key="countryDay.id">
+            <td>{{ parseDate(countryDay.created_at) }}</td>
+            <td>{{ convertToReadableFormat(countryDay.totalCases) }}</td>
+            <td>{{ convertToReadableFormat(countryDay.activeCases) }}</td>
+            <td>+ {{ convertToReadableFormat(countryDay.newCases) }}</td>
+            <td>+ {{ convertToReadableFormat(countryDay.newDeaths) }}</td>
+            <td>{{ convertToReadableFormat(countryDay.totalDeaths) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </Layout>
 </template>
 
