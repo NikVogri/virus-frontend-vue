@@ -14,6 +14,7 @@ import World from "./components/World.vue";
 import Top from "./components/Top.vue";
 import Continent from "./components/Continent.vue";
 import Country from "./components/Country.vue";
+import Compare from "./components/Compare.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
@@ -34,6 +35,7 @@ export default {
     Continent,
     Country,
     Footer,
+    Compare,
   },
 };
 </script>
