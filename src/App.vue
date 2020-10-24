@@ -1,7 +1,7 @@
 <template>
   <main class="container mt-3 mt-md-5">
     <Header @viewChanged="changeComponent" />
-    <keep-alive>
+    <keep-alive exclude="Favorites">
       <component :is="currComponent"></component>
     </keep-alive>
     <Footer />

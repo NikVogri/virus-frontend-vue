@@ -74,6 +74,7 @@ export default {
       this.inputVal = val;
     },
     fetchCountryData() {
+      this.isFavorited = false;
       this.loading = true;
       this.$http
         .get(`/country/${this.inputVal}`)
@@ -87,6 +88,7 @@ export default {
           this.errorMessage = "";
 
           if (JSON.parse(localStorage.getItem('favorites').indexOf(this.inputVal) !== -1)) {
+            console.log('here');
             this.isFavorited = true;
           }
 
