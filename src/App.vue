@@ -1,5 +1,5 @@
 <template>
-  <main class="container mt-5">
+  <main class="container mt-3 mt-md-5">
     <Header @viewChanged="changeComponent" />
     <keep-alive>
       <component :is="currComponent"></component>

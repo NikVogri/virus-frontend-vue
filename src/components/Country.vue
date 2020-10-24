@@ -27,8 +27,8 @@
             <td>{{ parseDate(countryDay.created_at) }}</td>
             <td>{{ convertToReadableFormat(countryDay.totalCases) }}</td>
             <td>{{ convertToReadableFormat(countryDay.activeCases) }}</td>
-            <td>+ {{ convertToReadableFormat(countryDay.newCases) }}</td>
-            <td>+ {{ convertToReadableFormat(countryDay.newDeaths) }}</td>
+            <td>+{{ convertToReadableFormat(countryDay.newCases) }}</td>
+            <td>+{{ convertToReadableFormat(countryDay.newDeaths) }}</td>
             <td>{{ convertToReadableFormat(countryDay.totalDeaths) }}</td>
           </tr>
         </tbody>

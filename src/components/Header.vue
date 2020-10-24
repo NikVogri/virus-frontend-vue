@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="card-body p-md-5">
+    <div class="card-body p-4 p-md-5">
       <div class="row mt-md-5">
         <div class="col-md-8">
           <h1>Corona virus statistics tracker</h1>

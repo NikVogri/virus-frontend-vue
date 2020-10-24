@@ -19,46 +19,46 @@
         <tbody>
           <tr>
             <td><strong>New Infections</strong></td>
-            <td>
+            <td :class="{larger: firstCountryTableData.newCases > secondCountryTableData.newCases}">
               {{ convertToReadableFormat(firstCountryTableData.newCases) }}
             </td>
-            <td>
+            <td :class="{larger: firstCountryTableData.newCases < secondCountryTableData.newCases}">
               {{ convertToReadableFormat(secondCountryTableData.newCases) }}
             </td>
           </tr>
           <tr>
             <td><strong>Total Infections</strong></td>
-            <td>
+            <td :class="{larger: firstCountryTableData.totalCases > secondCountryTableData.totalCases}">
               {{ convertToReadableFormat(firstCountryTableData.totalCases) }}
             </td>
-            <td>
+            <td :class="{larger: firstCountryTableData.totalCases < secondCountryTableData.totalCases}">
               {{ convertToReadableFormat(secondCountryTableData.totalCases) }}
             </td>
           </tr>
           <tr>
             <td><strong>Active Cases</strong></td>
-            <td>
+            <td :class="{larger: firstCountryTableData.activeCases > secondCountryTableData.activeCases}">
               {{ convertToReadableFormat(firstCountryTableData.activeCases) }}
             </td>
-            <td>
+            <td :class="{larger: firstCountryTableData.activeCases < secondCountryTableData.activeCases}">
               {{ convertToReadableFormat(secondCountryTableData.activeCases) }}
             </td>
           </tr>
           <tr>
             <td><strong>Total Deaths</strong></td>
-            <td>
+            <td :class="{larger: firstCountryTableData.totalDeaths > secondCountryTableData.totalDeaths}">
               {{ convertToReadableFormat(firstCountryTableData.totalDeaths) }}
             </td>
-            <td>
+            <td :class="{larger: firstCountryTableData.totalDeaths < secondCountryTableData.totalDeaths}">
               {{ convertToReadableFormat(secondCountryTableData.totalDeaths) }}
             </td>
           </tr>
           <tr>
             <td><strong>New Deaths</strong></td>
-            <td>
+            <td :class="{larger: firstCountryTableData.newDeaths > secondCountryTableData.newDeaths}">
               {{ convertToReadableFormat(firstCountryTableData.newDeaths) }}
             </td>
-            <td>
+            <td :class="{larger: firstCountryTableData.newDeaths < secondCountryTableData.newDeaths}">
               {{ convertToReadableFormat(secondCountryTableData.newDeaths) }}
             </td>
           </tr>
@@ -129,12 +129,12 @@ export default {
           "No results found for: " + this.secondInputVal);
       }
 
-      this.showTable = true;
-
       this.firstCountryTableData =
         firstCountryData.data.data[firstCountryData.data.data.length - 1];
       this.secondCountryTableData =
         secondCountryData.data.data[secondCountryData.data.data.length - 1];
+
+      this.showTable = true;
     },
   },
 };
@@ -143,5 +143,13 @@ export default {
 <style scoped lang="scss">
 .Layout {
   overflow: hidden;
+}
+
+.larger {
+  font-weight: bold;
+  color: green;
+}
+.larger::before {
+  content: "+";
 }
 </style>
