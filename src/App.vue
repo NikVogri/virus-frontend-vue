@@ -16,6 +16,7 @@ import Continent from "./components/Continent.vue";
 import Country from "./components/Country.vue";
 import Compare from "./components/Compare.vue";
 import Footer from "./components/Footer.vue";
+import Favorites from './components/Favorites.vue';
 
 export default {
   data() {
@@ -36,6 +37,7 @@ export default {
     Country,
     Footer,
     Compare,
+    Favorites
   },
 };
 </script>

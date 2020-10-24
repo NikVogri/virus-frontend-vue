@@ -3,9 +3,17 @@
     <hr />
 
     <CountryAutocomplete @inputChanged="changeInputValue" />
-    <button class="btn btn-info active mt-3" @click="fetchCountryData">
+   <div class="d-flex justify-content-between w-100 mt-3">
+
+      <button class="btn btn-info active block d-block" @click="fetchCountryData">
       Search
     </button>
+
+     <button class="btn btn-danger active  d-block" v-if="tableData &&  !isFavorited" @click="addToFavorites">
+      Add To Favorite
+    </button>
+    
+   </div>
     <p v-if="errorMessage" class="mt-2">
       <strong>{{ errorMessage }}</strong>
     </p>
@@ -55,6 +63,7 @@ export default {
       tableData: null,
       errorMessage: "",
       inputVal: "",
+      isFavorited: false
     };
   },
   methods: {
@@ -76,12 +85,30 @@ export default {
           this.chartData = res.data.data;
           this.tableData = [...res.data.data].reverse();
           this.errorMessage = "";
+
+          if (JSON.parse(localStorage.getItem('favorites').indexOf(this.inputVal) !== -1)) {
+            this.isFavorited = true;
+          }
+
         })
         .catch(() => {
           this.loading = false;
           this.errorMessage = "Failed fetching data, please try again later.";
         });
     },
+    addToFavorites() {
+      const oldFavorites = JSON.parse(localStorage.getItem('favorites'));
+
+      if (oldFavorites) {
+        if (oldFavorites.indexOf(this.inputVal) === -1) {
+          localStorage.setItem('favorites', JSON.stringify([...oldFavorites, this.inputVal]));
+        }
+      }  else {
+        localStorage.setItem('favorites', JSON.stringify([this.inputVal]));
+      }
+
+      this.isFavorited = true;
+    }
   },
 };
 </script>

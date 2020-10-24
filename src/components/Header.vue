@@ -34,7 +34,7 @@ import ViewButtons from "./ViewButtons";
 export default {
   data() {
     return {
-      viewList: ["World", "Top", "Continent", "Country", "Compare"],
+      viewList: ["World", "Top", "Continent", "Country", "Compare", "Favorites"],
       view: "World",
       lastUpdated: "Loading...",
     };
