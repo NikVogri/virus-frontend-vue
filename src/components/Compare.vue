@@ -13,8 +13,8 @@
       <table class="table">
         <thead>
           <th>Today</th>
-          <th>{{ firstInputVal }}</th>
-          <th>{{ secondInputVal }}</th>
+          <th>{{ firstCountryName }}</th>
+          <th>{{ secondCountryName }}</th>
         </thead>
         <tbody>
           <tr>
@@ -97,11 +97,9 @@ export default {
       return date.substring(0, 10).split("-").reverse().join("/");
     },
     changeFirstInputVal(val) {
-      this.showTable = false;
       this.firstInputVal = val;
     },
     changeSecondInputVal(val) {
-      this.showTable = false;
       this.secondInputVal = val;
     },
     async compareData() {
@@ -109,6 +107,7 @@ export default {
         return (this.errorMessage =
           "Please enter name for both countries you want to compare.");
       }
+
       this.errorMessage = "";
       this.loading = true;
       const firstCountryData = await this.$http.get(
@@ -133,6 +132,9 @@ export default {
         firstCountryData.data.data[firstCountryData.data.data.length - 1];
       this.secondCountryTableData =
         secondCountryData.data.data[secondCountryData.data.data.length - 1];
+
+      this.firstCountryName = this.firstInputVal;
+      this.secondCountryName = this.secondInputVal;
 
       this.showTable = true;
     },
