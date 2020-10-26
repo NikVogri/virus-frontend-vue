@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 dropdown">
+  <div class="w-100 dropdown" v-on:keyup.27="closeAutocomplete">
     <input
       type="text"
       placeholder="Enter Country"
@@ -7,7 +7,7 @@
       v-model="inputValue"
     />
 
-    <ul v-if="inputValue.length > 1 && showList">
+    <ul v-if="inputValue.length > 1 && showList" v-on-clickaway="away"> 
       <li
         v-for="country in displayCountryList"
         :key="country.code"
@@ -21,6 +21,8 @@
 
 <script>
 import countryList from "../lib/countries.js";
+import { mixin as clickaway } from 'vue-clickaway';
+
 export default {
   data() {
     return {
@@ -30,10 +32,17 @@ export default {
       autocompleted: false,
     };
   },
+  mixins: [ clickaway ],
   methods: {
     updateInput(country) {
       this.inputValue = country;
       this.autocompleted = true;
+      this.showList = false;
+    },
+    closeAutocomplete() {
+      this.showList = false;
+    },
+    away() {
       this.showList = false;
     },
   },
