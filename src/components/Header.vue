@@ -36,7 +36,7 @@ export default {
     return {
       viewList: ["World", "Top", "Continent", "Country", "Compare", "Favorites"],
       view: "World",
-      lastUpdated: "Loading...",
+      lastUpdated: "",
     };
   },
   methods: {
@@ -56,6 +56,11 @@ export default {
   },
   computed: {
     lastUpdatedTime() {
+
+      if (!this.lastUpdated) {
+        return 'Loading...'
+      }
+
       const updatedAtDate = new Date(this.lastUpdated);
       const currentDate = new Date().getDay();
 
