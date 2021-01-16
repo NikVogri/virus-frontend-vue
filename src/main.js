@@ -5,7 +5,7 @@ import axios from "axios";
 import methodsMixin from "./mixins/methodsMixin";
 
 const configuredAxios = axios.create({
-  baseURL: "https://virus-api-updated.herokuapp.com/api/v2",
+  baseURL: process.env.API_URL,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
