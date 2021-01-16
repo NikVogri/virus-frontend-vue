@@ -5,7 +5,7 @@ import axios from "axios";
 import methodsMixin from "./mixins/methodsMixin";
 
 const configuredAxios = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: process.env.VUE_APP_API_URL,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
